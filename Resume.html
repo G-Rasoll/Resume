@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسول حسینی - توسعه‌دهنده فول استک</title>
+    <meta name="description" content="توسعه‌دهنده فرانت‌اند حرفه‌ای با تخصص در React، Next.js و طراحی تجربه کاربری">
+    <meta property="og:title" content="علی محمدی - توسعه‌دهنده فرانت‌اند">
+    <meta property="og:description" content="توسعه‌دهنده فرانت‌اند حرفه‌ای با تخصص در React، Next.js و طراحی تجربه کاربری">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./Style/app.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="font-vazir bg-neutral-50 text-primary" dir="rtl">
+    <!-- Header -->
+  <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+
+            <!-- Logo -->
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">ر</span>
+                </div>
+                <span class="mr-3 font-bold text-xl text-primary">رسول حسینی</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8 space-x-reverse">
+                <a href="#home" class="nav-link text-neutral-700 hover:text-accent transition-colors">خانه</a>
+                <a href="#about" class="nav-link text-neutral-700 hover:text-accent transition-colors">درباره من</a>
+                <a href="#skills" class="nav-link text-neutral-700 hover:text-accent transition-colors">تخصص‌ها</a>
+                <a href="#portfolio" class="nav-link text-neutral-700 hover:text-accent transition-colors">نمونه کارها</a>
+                <a href="#experience" class="nav-link text-neutral-700 hover:text-accent transition-colors">تجربه‌ها</a>
+                <a href="#contact" class="nav-link text-neutral-700 hover:text-accent transition-colors">تماس</a>
+            </nav>
+
+            <!-- Social Links & CTA -->
+            <div class="hidden lg:flex items-center space-x-4 space-x-reverse">
+                <div class="flex items-center space-x-3 space-x-reverse">
+
+                    <a href="mailto:rasollhoseyni1@gmail.com" class="text-neutral-600 hover:text-accent transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                    <a href="https://t.me/MR_Rasollny" target="_blank" class="text-neutral-600 hover:text-accent transition-colors">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/rasoul-hosseini-410359305" target="_blank" class="text-neutral-600 hover:text-accent transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://github.com/G-Rasoll" target="_blank" class="text-neutral-600 hover:text-accent transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                </div>
+
+                <button onclick="downloadResume()" class="bg-accent text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium">
+                    دانلود رزومه
+                </button>
+
+                <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-neutral-100 transition-colors">
+                    <i id="theme-icon" class="fas fa-moon text-neutral-600"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden">
+        <div class="fixed inset-0 bg-black/50 z-40 opacity-0 transition-opacity duration-300" id="mobile-backdrop"></div>
+
+        <div class="fixed top-0 left-0 right-0 bg-white shadow-lg z-50 transform -translate-y-full transition-transform duration-300" id="mobile-menu-panel">
+            <div class="p-4">
+
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center ml-3">
+                            <span class="text-white font-bold text-sm">ر</span>
+                        </div>
+                        <span class="font-bold text-lg text-primary">رسول حسینی</span>
+                    </div>
+                    <button id="close-menu" class="p-2 rounded-lg hover:bg-neutral-100 transition-colors">
+                        <i class="fas fa-times text-xl text-neutral-600"></i>
+                    </button>
+                </div>
+
+                <nav class="grid grid-cols-2 gap-3 mb-6">
+                    <a href="#home" class="mobile-nav-link flex flex-col items-center p-4 rounded-xl bg-neutral-50 hover:bg-accent/10 transition-colors">
+                        <i class="fas fa-home text-2xl text-accent mb-2"></i>
+                        <span class="text-sm font-medium text-primary">خانه</span>
+                    </a>
+                    <a href="#about" class="mobile-nav-link flex flex-col items-center p-4 rounded-xl bg-neutral-50 hover:bg-accent/10 transition-colors">
+                        <i class="fas fa-user text-2xl text-accent mb-2"></i>
+                        <span class="text-sm font-medium text-primary">درباره من</span>
+                    </a>
+                    <a href="#skills" class="mobile-nav-link flex flex-col items-center p-4 rounded-xl bg-neutral-50 hover:bg-accent/10 transition-colors">
+                        <i class="fas fa-code text-2xl text-accent mb-2"></i>
+                        <span class="text-sm font-medium text-primary">تخصص‌ها</span>
+                    </a>
+                    <a href="#experience" class="mobile-nav-link flex flex-col items-center p-4 rounded-xl bg-neutral-50 hover:bg-accent/10 transition-colors">
+                        <i class="fas fa-history text-2xl text-accent mb-2"></i>
+                        <span class="text-sm font-medium text-primary">تجربه‌ها</span>
+                    </a>
+                    <a href="#contact" class="mobile-nav-link flex flex-col items-center p-4 rounded-xl bg-neutral-50 hover:bg-accent/10 transition-colors">
+                        <i class="fas fa-envelope text-2xl text-accent mb-2"></i>
+                        <span class="text-sm font-medium text-primary">تماس</span>
+                    </a>
+                </nav>
+
+                <div class="flex items-center justify-between pt-4 border-t border-neutral-200">
+
+                    <button onclick="downloadResume(); closeMobileMenu();" class="flex-1 bg-accent text-white py-3 px-4 rounded-lg hover:bg-orange-600 transition-colors font-medium text-sm ml-3">
+                        <i class="fas fa-download ml-2"></i>
+                        دانلود رزومه
+                    </button>
+
+                    <button onclick="toggleTheme()" class="p-3 rounded-lg bg-neutral-100 hover:bg-neutral-200 transition-colors">
+                        <i id="mobile-theme-icon" class="fas fa-moon text-lg text-neutral-600"></i>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+  <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-white animate-fade-in">
+                    <div class="mb-6">
+                        <span class="inline-block bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
+                            👋 سلام، من رسول هستم
+                        </span>
+                        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">
+                            توسعه‌دهنده
+                            <span class="text-accent">فول‌استک</span>
+                            با تمرکز روی بک‌اند
+                        </h1>
+                        <p class="text-xl text-neutral-300 leading-relaxed mb-8">برنامه‌نویسی رو با پایتون و ساخت ربات و کرولر شروع کردم، بعد از تجربه JavaScript در شرکت دانش‌بنیان پارت، وارد دنیای .NET و Blazor شدم و در شرکت کراد روی پروژه‌های واقعی سازمانی کار کردم. عاشق یادگیری ساخت سیستم‌های توسعه پذیر هستم
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button onclick="scrollToSection('contact')" class="bg-accent text-white px-8 py-4 rounded-lg hover:bg-orange-600 transition-all transform hover:scale-105 font-medium">
+                            تماس با من
+                        </button>
+                        <button onclick="scrollToSection('about')" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all font-medium">
+                            بیشتر بدانید
+                        </button>
+                    </div>
+
+
+                </div>
+
+                <!-- Profile Card -->
+                <div class="flex justify-center lg:justify-end animate-float">
+                    <div class="relative max-w-sm w-full">
+                        <div class="w-full max-w-80 h-80 sm:h-96 bg-white rounded-2xl shadow-2xl p-6 sm:p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300 mx-auto">
+                            <div class="w-full h-32 sm:h-48 bg-gradient-to-br from-accent to-orange-600 rounded-xl mb-4 sm:mb-6 flex items-center justify-center overflow-hidden">
+                               <img src="./Images/RasollPicture.jpg" alt="Rasoll">
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-bold text-primary mb-2">رسول حسینی</h3>
+                            <p class="text-neutral-600 mb-4 text-sm sm:text-base">.NET Full Stack Developer</p>
+                            <div class="flex justify-between text-xs sm:text-sm text-neutral-500">
+                                <span>📍 مشهد، ایران</span>
+                                <span>💼 آماده همکاری</span>
+                            </div>
+                        </div>
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-4 -right-4 w-6 h-6 sm:w-8 sm:h-8 bg-accent rounded-full animate-bounce"></div>
+                        <div class="absolute -bottom-4 -left-4 w-4 h-4 sm:w-6 sm:h-6 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.5s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+     <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">درباره من</h2>
+                <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                    توسعه‌دهنده Full-Stack با تمرکز بر .NET، طراحی سیستم‌های سازمانی و معماری مقیاس‌پذیر
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-slide-up">
+                    <h3 class="text-2xl font-bold text-primary mb-6">مسیر حرفه‌ای من</h3>
+                    <p class="text-neutral-700 leading-relaxed mb-6">
+                        مسیر برنامه‌نویسی من حدود پنج سال پیش با یادگیری خودآموز پایتون آغاز شد؛ 
+                        از ساخت ربات‌های تلگرامی و طراحی کرولرهای وب با BeautifulSoup و Selenium گرفته 
+                        تا پیاده‌سازی الگوهای طراحی در پروژه‌های شخصی. در دوران دانشگاه به‌صورت فعال 
+                        برنامه‌نویسی را ادامه دادم و در دوره فشرده Backpack 5 در شرکت دانش‌بنیان «پارت» 
+                        با JavaScript و مفاهیم عمیق توسعه وب آشنا شدم.
+                    </p>
+                    <p class="text-neutral-700 leading-relaxed mb-8">
+                        مسیر حرفه‌ای من با ورود به شرکت «کراد» وارد مرحله جدی‌تری شد؛ جایی که با 
+                        ASP.NET Core، Blazor و Syncfusion کار کردم و طی حدود یک سال و نیم، در توسعه 
+                        پنل‌های سازمانی، سیستم‌های مدیریت دسترسی و داشبوردهای تحلیلی نقش داشتم. 
+                        امروز تمرکز اصلی من روی توسعه بک‌اند قدرتمند، طراحی دیتابیس بهینه و ساخت 
+                        سیستم‌های قابل‌اعتماد در مقیاس سازمانی است.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-primary mb-2">مهارت‌های اصلی</h4>
+                            <ul class="text-neutral-600 space-y-1">
+                                <li>• ASP.NET Core & Blazor</li>
+                                <li>• SQL Server & Dapper</li>
+                                <li>• Python Development</li>
+                                <li>• System Architecture</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-primary mb-2">ویژگی‌های حرفه‌ای</h4>
+                            <ul class="text-neutral-600 space-y-1">
+                                <li>• تفکر سیستمی و حل مسئله</li>
+                                <li>• یادگیری سریع و خودآموز</li>
+                                <li>• تجربه کار تیمی و Team Lead</li>
+                                <li>• تمرکز بر Performance و Clean Code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-slide-up">
+                    <div class="bg-gradient-to-br from-accent/10 to-orange-100 rounded-2xl p-8">
+                        <h4 class="text-xl font-bold text-primary mb-6">مهارت‌های من</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-primary">ASP.NET Core / .NET</span>
+                                    <span class="text-accent font-medium">95%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full skill-bar" data-width="95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-primary">Blazor & Syncfusion</span>
+                                    <span class="text-accent font-medium">92%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full skill-bar" data-width="92%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-primary">SQL Server & Dapper</span>
+                                    <span class="text-accent font-medium">90%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full skill-bar" data-width="90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-primary">Python (Automation & Crawling)</span>
+                                    <span class="text-accent font-medium">85%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full skill-bar" data-width="85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium text-primary">JavaScript & Web Concepts</span>
+                                    <span class="text-accent font-medium">80%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full skill-bar" data-width="80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-neutral-50">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">تخصص‌ها و مهارت‌ها</h2>
+                <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                    تکنولوژی‌ها و ابزارهایی که در مسیر حرفه‌ای خود با آن‌ها کار کرده‌ام
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- .NET Backend -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow skill-card">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">.NET Backend Development</h3>
+                    <p class="text-neutral-600 mb-6">طراحی و توسعه سیستم‌های سازمانی و APIهای مقیاس‌پذیر</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">ASP.NET Core</span>
+                        <span class="skill-chip">Blazor Server</span>
+                        <span class="skill-chip">SQL Server</span>
+                        <span class="skill-chip">Dapper</span>
+                        <span class="skill-chip">EfCore</span>
+                    </div>
+                </div>
+
+                <!-- Architecture -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow skill-card">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-project-diagram text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">System Design & Architecture</h3>
+                    <p class="text-neutral-600 mb-6">طراحی ساختار سیستم و مدیریت دسترسی در پروژه‌های واقعی</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">RBAC</span>
+                        <span class="skill-chip">Clean Architecture</span>
+                        <span class="skill-chip">Database Design</span>
+                        <span class="skill-chip">Performance Focus</span>
+                    </div>
+                </div>
+
+                <!-- Python -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow skill-card">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fab fa-python text-3xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Python Development</h3>
+                    <p class="text-neutral-600 mb-6">توسعه ابزارهای اتوماسیون، ربات و پروژه‌های الگوریتمی</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Python</span>
+                        <span class="skill-chip">Telegram Bots</span>
+                        <span class="skill-chip">BeautifulSoup</span>
+                        <span class="skill-chip">Selenium</span>
+                        <span class="skill-chip">Design Patterns</span>
+                    </div>
+                </div>
+
+                <!-- Web & JavaScript -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow skill-card">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fab fa-js text-3xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Web Concepts & JavaScript</h3>
+                    <p class="text-neutral-600 mb-6">آشنایی با مفاهیم عمیق وب و توسعه JavaScript در محیط حرفه‌ای</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">JavaScript</span>
+                        <span class="skill-chip">HTTP Concepts</span>
+                        <span class="skill-chip">REST</span>
+                        <span class="skill-chip">Async Programming</span>
+                        <span class="skill-chip">Backpack 5</span>
+                    </div>
+                </div>
+
+                <!-- UI & Blazor -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow skill-card">
+                    <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-layer-group text-3xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Blazor & Enterprise UI</h3>
+                    <p class="text-neutral-600 mb-6">ساخت پنل‌های مدیریتی و داشبوردهای سازمانی</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Blazor Server</span>
+                        <span class="skill-chip">Blazor Hybrid And Web app</span>
+                        <span class="skill-chip">Syncfusion</span>
+                        <span class="skill-chip">Admin Panels</span>
+                        <span class="skill-chip">Component Design</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow skill-card">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-tools text-3xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-4">Tools & Workflow</h3>
+                    <p class="text-neutral-600 mb-6">ابزارهایی که در فرآیند توسعه روزمره استفاده می‌کنم</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Git</span>
+                        <span class="skill-chip">Gitflow</span>
+                        <span class="skill-chip">Visual Studio</span>
+                        <span class="skill-chip">PyCharm</span>
+                        <span class="skill-chip">Agile Workflow</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">نمونه کارها</h2>
+                <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                    پروژه‌هایی که با تمرکز روی بک‌اند، معماری تمیز و سیستم‌های واقعی ساختم
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project Card 1 -->
+                <div onclick="openModal('azonik')" class="bg-neutral-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer service-card">
+                    <div class="h-40 bg-gradient-to-br from-accent/10 to-orange-100 flex items-center justify-center">
+                        <img src="./Images/Logo/AZONIK.png" class="h-16 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-primary mb-2">پنل مدیریت شرکت دانش بنیان آزونیک</h3>
+                        <p class="text-neutral-600 text-sm mb-4">
+                            سامانه مدیریت دانش و مانیتورینگ دستگاه‌ها با Blazor Server و SQL Server
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-chip">.NET</span>
+                            <span class="skill-chip">Blazor</span>
+                            <span class="skill-chip">Dapper</span>
+                            <span class="skill-chip">RBAC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div onclick="openModal('vote')" class="bg-neutral-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer service-card">
+                    <div class="h-40 bg-gradient-to-br from-accent/10 to-orange-100 flex items-center justify-center">
+                        <img src="./Images/Logo/Toos.jpg" class="h-16 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-primary mb-2">سامانه رای‌گیری موسسه آموزش عالی توس</h3>
+                        <p class="text-neutral-600 text-sm mb-4">
+                            طراحی دیتابیس و معماری سیستم رای‌گیری با تمرکز روی امنیت و Performance
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-chip">.NET 9</span>
+                            <span class="skill-chip">Team Lead</span>
+                            <span class="skill-chip">SQL</span>
+                            <span class="skill-chip">High Concurrency</span>
+                            <span class="skill-chip">Syncfusion</span>
+                            <span class="skill-chip">EfCore</span>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div onclick="openModal('oxygen')" class="bg-neutral-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer service-card">
+                    <div class="h-40 bg-gradient-to-br from-accent/10 to-orange-100 flex items-center justify-center">
+                        <img src="./Images/Logo/Oxygen.png" class="h-16 object-contain">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-primary mb-2">سیستم مدیریت سیلندر اکسیژن</h3>
+                        <p class="text-neutral-600 text-sm mb-4">
+                            سامانه تست و مدیریت چرخه عمر سیلندرها با RBAC و ساختار ماژولار
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-chip">MAUI</span>
+                            <span class="skill-chip">Blazor Hybrid</span>
+                            <span class="skill-chip">RBAC</span>
+                            <span class="skill-chip">Syncfusion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- project card 4 -->
+                <div onclick="openModal('sajjad')" 
+                    class="bg-neutral-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer service-card">
+
+                    <div class="h-40 bg-gradient-to-br from-accent/10 to-orange-100 flex items-center justify-center">
+                    <img src="./Images/Logo/Sj.png" class="h-16 object-contain">
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-primary mb-2">
+                            پنل مدیریت اکسسوری سجاد
+                        </h3>
+
+                        <p class="text-neutral-600 text-sm mb-4 text-justify">
+                            بازنویسی منطق هسته سامانه، پیاده‌سازی زیرساخت احراز هویت سفارشی و بومی‌سازی کامپوننت‌های پیشرفته برای مدیریت فروشگاه نقره.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-chip">Custom Auth</span>
+                            <span class="skill-chip">Refactoring</span>
+                            <span class="skill-chip">Syncfusion</span>
+                            <span class="skill-chip">Dapper</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- project card 5 -->
+                <div onclick="openModal('kavan')" 
+                class="bg-neutral-50 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer service-card">
+
+                <div class="h-40 bg-gradient-to-br from-accent/10 to-orange-100 flex items-center justify-center">
+                    <img src="./Images/Logo/Kavan.png" class="h-16 object-contain">
+                </div>
+
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-primary mb-2">
+                        سامانه بازرگانی جواهری کاوان
+                    </h3>
+
+                    <p class="text-neutral-600 text-sm mb-4 text-justify">
+                        ارتقای پلتفرم به یک سیستم سه زبانه (فارسی، انگلیسی، عربی) با پیاده‌سازی معماری داده‌های پویا بر اساس فرهنگ (Culture) و موقعیت کاربر.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-chip">Blazor WASM</span>
+                        <span class="skill-chip">Multi-Language</span>
+                        <span class="skill-chip">API Refactoring</span>
+                        <span class="skill-chip">SQL</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+        <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">تجربه کاری</h2>
+                <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                    مسیر حرفه‌ای من از پایتون تا توسعه سیستم‌های سازمانی با .NET
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute right-8 top-0 bottom-0 w-0.5 bg-accent hidden lg:block"></div>
+
+                <div class="space-y-12">
+
+                    <!-- Voting System - Team Lead -->
+                    <div class="relative flex items-start">
+                        <div class="hidden lg:flex absolute right-6 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:mr-20 w-full">
+                            <div class="bg-neutral-50 rounded-xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow">
+                                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                    <div class="flex-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                            <h3 class="text-lg sm:text-xl font-bold text-primary">Team Lead & Backend Developer</h3>
+                                            <span class="text-neutral-600 bg-white px-3 py-1 rounded-md text-xs sm:text-sm mt-1 sm:mt-0 self-start">۱۴۰۴</span>
+                                        </div>
+                                        <p class="text-accent font-medium">سامانه رای‌گیری الکترونیک دانشکده توس</p>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 leading-relaxed mb-4 text-sm sm:text-base">
+                                    طراحی معماری دیتابیس و توسعه بک‌اند سامانه رای‌گیری با تمرکز بر Data Integrity
+                                    و مدیریت همزمانی بالا. هدایت تیم توسعه و پیاده‌سازی داشبوردهای Real-time
+                                    برای مانیتورینگ فرآیند انتخابات.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-chip">.NET Core</span>
+                                    <span class="skill-chip">Blazor Server</span>
+                                    <span class="skill-chip">Dapper</span>
+                                    <span class="skill-chip">High Concurrency</span>
+                                    <span class="skill-chip">Database Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crowad Company -->
+                    <div class="relative flex items-start">
+                        <div class="hidden lg:flex absolute right-6 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:mr-20 w-full">
+                            <div class="bg-neutral-50 rounded-xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow">
+                                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                    <div class="flex-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                            <h3 class="text-lg sm:text-xl font-bold text-primary">Full-Stack .NET Developer</h3>
+                                            <span class="text-neutral-600 bg-white px-3 py-1 rounded-md text-xs sm:text-sm mt-1 sm:mt-0 self-start">۱۴۰۳ - ۱۴۰۴</span>
+                                        </div>
+                                        <p class="text-accent font-medium">شرکت نرم‌افزاری کراد (CRUD)</p>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 leading-relaxed mb-4 text-sm sm:text-base">
+                                    توسعه و پیاده‌سازی سامانه‌های سازمانی با ASP.NET Core و Blazor Server.
+                                    مشارکت در طراحی پنل ادمین شرکت ازونیک، سامانه مدیریت سیلندر اکسیژن
+                                    و سیستم‌های RBAC پیشرفته با تمرکز بر Performance، امنیت و معماری تمیز.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-chip">ASP.NET Core</span>
+                                    <span class="skill-chip">Blazor</span>
+                                    <span class="skill-chip">Syncfusion</span>
+                                    <span class="skill-chip">SQL Server</span>
+                                    <span class="skill-chip">Dapper</span>
+                                    <span class="skill-chip">RBAC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Part Company -->
+                    <div class="relative flex items-start">
+                        <div class="hidden lg:flex absolute right-6 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:mr-20 w-full">
+                            <div class="bg-neutral-50 rounded-xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow">
+                                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                    <div class="flex-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                            <h3 class="text-lg sm:text-xl font-bold text-primary">JavaScript Trainee (Backpack 5)</h3>
+                                            <span class="text-neutral-600 bg-white px-3 py-1 rounded-md text-xs sm:text-sm mt-1 sm:mt-0 self-start">۱۴۰۲</span>
+                                        </div>
+                                        <p class="text-accent font-medium">شرکت دانش‌بنیان پارت</p>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 leading-relaxed mb-4 text-sm sm:text-base">
+                                    گذراندن دوره فشرده توسعه وب و JavaScript با تمرکز بر مفاهیم عمیق برنامه‌نویسی،
+                                    ساختارهای مدرن وب و کار تیمی در محیط حرفه‌ای.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-chip">JavaScript</span>
+                                    <span class="skill-chip">Web Concepts</span>
+                                    <span class="skill-chip">Problem Solving</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Python Era -->
+                    <div class="relative flex items-start">
+                        <div class="hidden lg:flex absolute right-6 w-4 h-4 bg-accent rounded-full border-4 border-white shadow-lg"></div>
+                        <div class="lg:mr-20 w-full">
+                            <div class="bg-neutral-50 rounded-xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-shadow">
+                                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                    <div class="flex-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                                            <h3 class="text-lg sm:text-xl font-bold text-primary">Python Developer (Self-Driven)</h3>
+                                            <span class="text-neutral-600 bg-white px-3 py-1 rounded-md text-xs sm:text-sm mt-1 sm:mt-0 self-start">۱۳۹۹ - ۱۴۰۲</span>
+                                        </div>
+                                        <p class="text-accent font-medium">پروژه‌های شخصی و تحقیقاتی</p>
+                                    </div>
+                                </div>
+                                <p class="text-neutral-700 leading-relaxed mb-4 text-sm sm:text-base">
+                                    توسعه ربات‌های تلگرامی، طراحی کرولرهای وب با BeautifulSoup و Selenium
+                                    و پیاده‌سازی Design Patternها در پروژه‌های شخصی با تمرکز بر اتوماسیون.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-chip">Python</span>
+                                    <span class="skill-chip">Telegram Bots</span>
+                                    <span class="skill-chip">Web Crawling</span>
+                                    <span class="skill-chip">BeautifulSoup</span>
+                                    <span class="skill-chip">Selenium</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white h-100">
+    <div class="max-w-5xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-primary mb-4">ارتباط با من</h2>
+            <p class="text-xl text-neutral-600 max-w-2xl mx-auto">
+                اگر علاقه‌مند به همکاری، استخدام یا گفتگو درباره پروژه هستید می‌توانید از طریق راه‌های زیر با من در ارتباط باشید.
+            </p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-2xl p-10 dark:bg-neutral-800">
+            <div class="grid md:grid-cols-2 gap-10">
+
+                <!-- Contact Items -->
+                <div class="space-y-8">
+
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center ml-4">
+                            <i class="fas fa-envelope text-accent text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-white">ایمیل</p>
+                            <a href="mailto:rasollhoseyni1@gmail.com" class="text-neutral-500 hover:text-accent transition-colors">
+                                rasollhoseyni1@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center ml-4">
+                            <i class="fas fa-phone text-accent text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-white">شماره تماس</p>
+                            <a href="tel:+989354250738" class="text-neutral-500 hover:text-accent transition-colors">
+                                ۰۹۳۵۴۲۵۰۷۳۸
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex flex-col justify-center">
+                    <h4 class="text-xl font-bold text-white mb-6">شبکه‌های اجتماعی</h4>
+                    <div class="flex flex-wrap gap-4">
+
+                        <a href="https://www.linkedin.com/in/rasoul-hosseini-410359305"
+                           class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+
+                        <a href="https://github.com/G-Rasoll"
+                           class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+
+                        <a href="https://t.me/MR_Rasollny"
+                           class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-telegram text-xl"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- Footer -->
+<footer class="bg-primary text-white py-16">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center ml-3">
+                        <span class="text-white font-bold text-lg">ر</span>
+                    </div>
+                    <span class="font-bold text-xl">رسول حسینی</span>
+                </div>
+
+                <p class="text-neutral-300 leading-relaxed mb-6">
+                    توسعه‌دهنده بک‌اند و علاقه‌مند به معماری نرم‌افزار، طراحی و ساخت سیستم‌های مقیاس‌پذیر با python و .Net                </p>
+
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="https://www.linkedin.com/in/rasoul-hosseini-410359305"
+                       class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a href="https://github.com/G-Rasoll"
+                       class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="https://t.me/MR_Rasollny"
+                       class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+
+                    <a href="mailto:rasollhoseyni1@gmail.com"
+                       class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-bold text-lg mb-6">لینک‌های سریع</h4>
+                <ul class="space-y-3">
+                    <li><a href="#home" class="text-neutral-300 hover:text-accent transition-colors">خانه</a></li>
+                    <li><a href="#about" class="text-neutral-300 hover:text-accent transition-colors">درباره من</a></li>
+                    <li><a href="#portfolio" class="text-neutral-300 hover:text-accent transition-colors">نمونه کارها</a></li>
+                    <li><a href="#experience" class="text-neutral-300 hover:text-accent transition-colors">تجربه‌ها</a></li>
+                    <li><a href="#contact" class="text-neutral-300 hover:text-accent transition-colors">تماس</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h4 class="font-bold text-lg mb-6">اطلاعات تماس</h4>
+
+                <div class="space-y-4">
+
+                    <div class="flex items-center">
+                        <i class="fas fa-envelope text-accent ml-3"></i>
+                        <a href="mailto:rasollhoseyni1@gmail.com"
+                           class="text-neutral-300 hover:text-accent transition-colors">
+                            rasollhoseyni1@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <i class="fas fa-phone text-accent ml-3"></i>
+                        <a href="tel:+989354250738"
+                           class="text-neutral-300 hover:text-accent transition-colors">
+                            ۰۹۳۵۴۲۵۰۷۳۸
+                        </a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-accent ml-3"></i>
+                        <span class="text-neutral-300">ایران</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="border-t border-white/10 pt-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <p class="text-neutral-400 text-sm mb-4 lg:mb-0">
+                    © ۲۰۲۶ رسول حسینی. تمامی حقوق محفوظ است.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- Portfolio Modal -->
+<div id="portfolioModal" onclick="outsideClick(event)" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4 transition-all duration-300 opacity-0">
+
+    <div id="modalBox"
+         class="bg-white dark:bg-neutral-50 max-w-4xl w-full rounded-2xl p-0 relative overflow-hidden transform scale-95 transition-all duration-300">
+
+        <!-- Header -->
+        <div class="hero-gradient p-6 text-white relative">
+            <button onclick="closeModal()" class="absolute left-5 top-5 text-white text-xl hover:scale-110 transition">✕</button>
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
+            <p id="modalRole" class="text-neutral-200 text-sm"></p>
+        </div>
+
+        <!-- Body -->
+        <div class="p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+
+            <!-- Description -->
+            <div>
+                <h4 class="font-bold text-primary mb-2">📌 توضیحات پروژه</h4>
+                <p id="modalDesc" class="text-neutral-700 leading-relaxed"></p>
+            </div>
+
+            <!-- Tools -->
+            <div>
+                <h4 class="font-bold text-primary mb-3">🧰 ابزارها</h4>
+                <div id="modalTools" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Techniques -->
+            <div>
+                <h4 class="font-bold text-primary mb-3">⚙️ تکنیک‌ها و معماری</h4>
+                <ul id="modalTech" class="grid sm:grid-cols-2 gap-2 text-neutral-700 text-sm"></ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 left-8 w-12 h-12 bg-accent text-white rounded-full shadow-lg hover:bg-orange-600 transition-all transform translate-y-16 opacity-0">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+   <script src="./assets/js/Mouse.js"></script>
+   <script src="assets/js/config.js"></script>
+   <script src="assets/js/data.js"></script>
+   <script src="assets/js/modal.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/navigation.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/blog.js"></script>
+<script src="assets/js/contact.js"></script>
+<script src="assets/js/resume.js"></script>
+<script src="assets/js/backToTop.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97bee6efc7075cc8',t:'MTc1NzMzOTI5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
